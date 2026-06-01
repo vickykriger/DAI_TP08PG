@@ -1,6 +1,6 @@
 import DBConfig from './../config/db_config.js';
 import pkg from 'pg';
-const { Client, Pool} = pkg;
+const { Client} = pkg;
 
 export default class ProvinceRepository{
     getAllAsync = async () =>{

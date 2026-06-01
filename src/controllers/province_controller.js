@@ -1,16 +1,17 @@
-import {Router} from 'express';
+import { Router } from 'express';
 import ProvinceService from './../services/province_service.js';
+
 const router = Router();
 const svc = new ProvinceService();
 
-router.get('', async (req, res) =>{
-    let respuesta;
+router.get('/', async (req, res) => {
     const returnArray = await svc.getAllAsync();
-    if(returnArray != null){
-        respuesta = res.status(200).json(returnArray);
-    } else{
-        respuesta= res.status(500).send(`Error interno.`);
+
+    if (returnArray != null) {
+        return res.status(200).json(returnArray);
     }
-    return respuesta;
+
+    return res.status(500).send('Error interno.');
 });
+
 export default router;
