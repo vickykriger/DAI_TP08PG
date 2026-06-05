@@ -1,4 +1,5 @@
 import DBConfig from './../config/db_config.js';
+import LogHelper from './../helpers/log_helpers.js';
 import pkg from 'pg';
 const { Client } = pkg;
 
@@ -12,6 +13,7 @@ export default class ProvinceRepository {
             await client.end();
             return result.rows;
         } catch (error) {
+            LogHelper.logError(error);
             console.log(error);
             return null;
         }
@@ -26,6 +28,7 @@ export default class ProvinceRepository {
             await client.end();
             return result.rows.length > 0 ? result.rows[0] : null;
         } catch (error) {
+            LogHelper.logError(error);
             console.log(error);
             return null;
         }
@@ -42,6 +45,7 @@ export default class ProvinceRepository {
             await client.end();
             return true;
         } catch (error) {
+            LogHelper.logError(error);
             console.log(error);
             return false;
         }
@@ -59,6 +63,7 @@ export default class ProvinceRepository {
             await client.end();
             return result.rowCount > 0;
         } catch (error) {
+            LogHelper.logError(error);
             console.log(error);
             return false;
         }
@@ -73,6 +78,7 @@ export default class ProvinceRepository {
             await client.end();
             return result.rowCount > 0;
         } catch (error) {
+            LogHelper.logError(error);
             console.log(error);
             return false;
         }
